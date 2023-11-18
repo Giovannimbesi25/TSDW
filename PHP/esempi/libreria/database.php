@@ -66,7 +66,11 @@
       die("Connessione al database fallita " . $conn->connect_error);
     }
 
+<<<<<<< HEAD
     $sql = "INSERT INTO Books (title, author, year) VALUES(?,?,?)";
+=======
+    $sql = "INSERT INTO Books (title, author, year) VALUES(?,?,?,?)";
+>>>>>>> 7da3c3cb8ec695a18bc1dd381de78677c0d3d34e
 
     $stm = $conn->prepare($sql);
     $stm->bind_param("sss", $data['title'], $data['author'], $data['year']);
