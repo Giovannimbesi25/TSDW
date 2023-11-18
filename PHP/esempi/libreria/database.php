@@ -66,10 +66,10 @@
       die("Connessione al database fallita " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO Books VALUES(?,?,?,?)";
+    $sql = "INSERT INTO Books (title, author, year) VALUES(?,?,?)";
 
     $stm = $conn->prepare($sql);
-    $stm->bind_param("isss", $data['id'],$data['title'], $data['author'], $data['year']);
+    $stm->bind_param("sss", $data['title'], $data['author'], $data['year']);
     
     if($stm->execute()){
       echo "Libro inserito con successo";
