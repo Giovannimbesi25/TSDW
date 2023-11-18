@@ -7,7 +7,6 @@
         require_once('database.php');
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-          $id = uniqid();
           $author = $_POST['author'];
           $title = $_POST['title'];
           $year = $_POST['year'];
