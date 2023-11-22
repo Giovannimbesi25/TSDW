@@ -18,7 +18,7 @@
           }
         }else{
           ?>
-          <form method="post" action="<?php $_SERVER['PHP_SELF']?>">
+          <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
           Title: <input type="text" name="title" value="">
           Author: <input type="text" name="author" value="" >
           Year: <input type="text" name="year" value="" >

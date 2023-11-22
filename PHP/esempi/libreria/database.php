@@ -1,13 +1,22 @@
 <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "giovanni";
-  $dbname = "php_db";
-
-  function createTable() {
-    global $servername, $username, $password, $dbname;
+  function getConnection(){
+    $servername = "localhost";
+    $username = "root";
+    $password = "giovanni";
+    $dbname = "php_db";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if($conn->connect_error){
+      die("Connessione al database fallita " . $conn->connect_error);
+    }
+
+    return $conn;
+
+  }
+
+  function createTable() {
+    $conn = getConnection();
 
     if ($conn->connect_error) {
         die("Connessione al database fallita " . $conn->connect_error);
@@ -20,7 +29,9 @@
       year INT NOT NULL
     )";
 
-    if ($conn->query($sql) === TRUE) {
+    $stm = $conn -> prepare($sql); 
+
+    if ($stm->execute()) {
         error_log("Tabella creata con successo o già esistente.");
     } else {
         error_log("Errore nella creazione della tabella: " . $conn->error);
@@ -32,39 +43,28 @@
 
   function getAllBooks(){
 
-    global $username, $password, $dbname, $servername;
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if($conn->connect_error){
-      die("Connessione al database fallita " . $conn->connect_error);
-    }
+    $conn = getConnection();
 
     $sql = "SELECT * FROM Books";
-    $result = $conn->query($sql);
+
+    $stm = $conn->prepare($sql);
+
+    $stm->execute();
+
     $books = array();
 
-    if($result->num_rows > 0){
-      while($row = $result->fetch_assoc()){
-        $books[] = $row;
-      }
+    if($result = $stm->get_result()){
+      $books = $result->fetch_all(MYSQLI_ASSOC);
     }
-
+    
     $conn->close();
-
+    $stm->close();
     return $books;
   }
 
   function createBook($data){
 
-    error_log("CREATE BOOK");
-
-    global $username, $password, $dbname, $servername;
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if($conn->connect_error){
-      die("Connessione al database fallita " . $conn->connect_error);
-    }
+    $conn = getConnection();
 
     $sql = "INSERT INTO Books (title, author, year) VALUES(?,?,?)";
 
@@ -84,13 +84,8 @@
 
   function deleteBook($id){
 
-    global $username, $servername, $password, $dbname;
+    $conn = getConnection();
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if($conn->connect_error){
-      die("Connessione al database fallita " . $conn->connect_error);
-    }
 
     $sql = "DELETE FROM Books WHERE id = ?";
 
@@ -108,13 +103,8 @@
   }
 
   function updateLibro($data){
-    global $servername , $username, $password, $dbname;
+    $conn = getConnection();
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if($conn->connect_error){
-      die("Errore nella connessione " . $conn->connect_error);
-    }
 
     $sql = "UPDATE Books SET title = ? , author = ? , year = ? WHERE id = ? ";
     $stm = $conn->prepare($sql);
