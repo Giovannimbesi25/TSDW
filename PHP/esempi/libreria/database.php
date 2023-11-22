@@ -104,8 +104,6 @@
 
   function updateLibro($data){
     $conn = getConnection();
-
-
     $sql = "UPDATE Books SET title = ? , author = ? , year = ? WHERE id = ? ";
     $stm = $conn->prepare($sql);
 

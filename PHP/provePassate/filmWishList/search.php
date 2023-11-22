@@ -11,7 +11,7 @@
       $titolo = $_POST['titolo'];
       $regista = $_POST['regista'];
 
-      if (isset($_POST['choice'])) {
+      if (($_POST['choice']) != null) {
         $choice = $_POST['choice'];
 
         if ($choice == "Si") {
