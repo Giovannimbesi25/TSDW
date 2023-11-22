@@ -24,15 +24,19 @@ function createTable(){
     cognome VARCHAR(20) NOT NULL,
     età INT(6) NOT NULL
     )";
+  
+  $stm = $conn->prepare($sql)
 
-    if($conn->query($sql) == TRUE){
-      error_log("Table created successfully");
-      $conn->close();
+    if($stm->exceute()){
+      echo "Table created successfully";
 
     }else{
-      error_log("Error creating table...");
-      $conn->close();
+      echo "Error creating table...";
+
     }
+
+    $conn->close();
+    $stm->close();
 }
 
 function insertStudente($data){
@@ -47,9 +51,11 @@ function insertStudente($data){
 
   if($stm->execute()){
     $conn->close();
+    $stm->close();
     return true;
   }else{
     $conn->close();
+    $stm->close();
     return false;
   }
 }
@@ -59,14 +65,21 @@ function getStudenti(){
 
   $sql = "SELECT * FROM Studenti";
 
-  if($result=$conn->query($sql)){
+  $stm = $conn->prepare($sql)
+  $stm->execute();
+
+  if($result = $stm->get_result()){
 
     $studenti = $result->fetch_all(MYSQLI_ASSOC);
 
     $conn->close();
+    $stm->close();
+
     return $studenti;
   }else{
     $conn->close();
+    $stm->close();
+
     return false;
   }
 }
@@ -82,10 +95,12 @@ function updateStudente($data){
 
   if($stm->execute()){
     $conn->close();
+    $stm->close();
 
     return true;
   }else{
     $conn->close();
+    $stm->close();
 
     return false;
   }
@@ -104,10 +119,12 @@ function deleteStudente($id){
 
   if($stm->execute()){
     $conn->close();
+    $stm->close();
 
     return true;
   }else{
     $conn->close();
+    $stm->close();
 
     return false;
   }
