@@ -6,11 +6,7 @@ function getConnection (){
   $password = "giovanni";
   $dbName = "php_db";
 
-  $conn = new mysqli($servername, $username, $password, $dbName);
-
-  if($conn->connect_error){
-    die("Connection not established..." . $conn->connect_error);
-  }
+  $conn = new mysqli($servername, $username, $password, $dbName) or die("Connection not established...");
 
   return $conn;
 }
@@ -25,18 +21,13 @@ function createTable(){
     età INT(6) NOT NULL
     )";
   
-  $stm = $conn->prepare($sql)
 
-    if($stm->exceute()){
-      echo "Table created successfully";
-
-    }else{
-      echo "Error creating table...";
-
-    }
-
-    $conn->close();
-    $stm->close();
+  if($conn->query($sql)){
+    echo "Table created successfully";
+  }else{
+    echo "Error creating table...";
+  }
+  $conn->close();
 }
 
 function insertStudente($data){
@@ -65,10 +56,8 @@ function getStudenti(){
 
   $sql = "SELECT * FROM Studenti";
 
-  $stm = $conn->prepare($sql)
-  $stm->execute();
 
-  if($result = $stm->get_result()){
+  if($result = $conn->query($sql)){
 
     $studenti = $result->fetch_all(MYSQLI_ASSOC);
 

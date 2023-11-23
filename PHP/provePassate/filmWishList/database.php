@@ -6,11 +6,7 @@
     $password = "giovanni";
     $dbName = "php_db";
 
-    $conn = new mysqli($servername, $username, $password, $dbName);
-
-    if($conn->connect_error){
-      die("Connessione al database fallita" . $conn->connect_error);
-    }
+    $conn = new mysqli($servername, $username, $password, $dbName) or die("Connection not established..."); 
 
     return $conn;
   }
@@ -51,15 +47,10 @@
 
     $sql = "SELECT * FROM flist ORDER BY RAND() LIMIT 1";
 
-    $stm = $conn->prepare($sql);
-
-    $stm->execute();
-
-    if($result = $stm->get_result()){
+    if($result = $conn->query($sql)){
       $data = $result->fetch_assoc();
     }
 
-    $stm->close();
     $conn->close();
 
     return $data['titolo'];
@@ -118,16 +109,11 @@
 
     $sql = "SELECT * FROM wlist";
 
-    $stm = $conn->prepare($sql);
-
-    $stm->execute();
-
-    if($result = $stm->get_result()){
+    if($result = $conn->query($sql)){
       $data = $result->fetch_all(MYSQLI_ASSOC);
 
     }
 
-    $stm->close();
     $conn->close();
 
     return $data;
@@ -138,13 +124,9 @@
 
     $sql = "TRUNCATE TABLE wlist";
 
-    $stm = $conn->prepare($sql);
+    $conn->query($sql);
 
-    $stm->execute();
-
-    $stm->close();
     $conn->close();
-    
   }
 
 ?>

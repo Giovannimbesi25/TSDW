@@ -6,7 +6,7 @@
     $password = "giovanni";
     $dbName = "php_db";
 
-    $conn = new mysqli($servername, $username, $password, $dbName) or die("Connect failed " .$conn->error);
+    $conn = new mysqli($servername, $username, $password, $dbName) or die("Connect failed " . $conn->error);
 
     return $conn;
   }

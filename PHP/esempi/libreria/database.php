@@ -5,11 +5,7 @@
     $password = "giovanni";
     $dbname = "php_db";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if($conn->connect_error){
-      die("Connessione al database fallita " . $conn->connect_error);
-    }
+    $conn = new mysqli($servername, $username, $password, $dbname) or die("Connessione al database fallita ");
 
     return $conn;
 
@@ -29,12 +25,11 @@
       year INT NOT NULL
     )";
 
-    $stm = $conn -> prepare($sql); 
 
-    if ($stm->execute()) {
-        error_log("Tabella creata con successo o già esistente.");
+    if ($conn->query($sql)) {
+        echo 'Tabella creata con successo o già esistente';
     } else {
-        error_log("Errore nella creazione della tabella: " . $conn->error);
+        echo 'Errore creazione tabella';
     }
 
     $conn->close();
@@ -47,18 +42,12 @@
 
     $sql = "SELECT * FROM Books";
 
-    $stm = $conn->prepare($sql);
 
-    $stm->execute();
-
-    $books = array();
-
-    if($result = $stm->get_result()){
+    if($result = $conn->query($sql)){
       $books = $result->fetch_all(MYSQLI_ASSOC);
     }
     
     $conn->close();
-    $stm->close();
     return $books;
   }
 
