@@ -51,7 +51,7 @@
     }
       if($book){
         ?>
-          <form method = "post" action = "<?= $_SERVER['PHP_SELF'] ?>">
+          <form method = "post" action = "">
           ISBN: <input readonly type="text" name="isbn" value="<?= $book['isbn'] ?>"><br><br>
           TITLE: <input  type="text" name = "title" value="<?= $book['title'] ?>"><br><br>
           AUTHOR: <input  type="text" name = "author" value="<?= $book['author'] ?>"><br><br>

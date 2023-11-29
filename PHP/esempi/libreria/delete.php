@@ -18,7 +18,7 @@
         }else{
           foreach($books as $row){
             ?>
-            <form method="post" action="<?php print $_SERVER['PHP_SELF']; ?>">
+            <form method="post" action="">
             <input type="hidden" name="id" value="<?php print $row['id']; ?>">
             Title: <input value="<?php print $row['title']; ?>" readonly>
             Author: <input value="<?php print $row['author']; ?>" readonly>

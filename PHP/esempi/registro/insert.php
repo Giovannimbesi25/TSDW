@@ -28,7 +28,7 @@
     }else{
       ?>
       <h3>Inserisci i dati del tuo nuovo studente</h3>
-      <form method="post" action="<?php print $_SERVER['PHP_SELF']; ?>">
+      <form method="post" action="">
       Nome:    <input type="text" name="nome"  value=""><br><br>
       Cognome: <input type="text" name="cognome" value=""><br><br>
       Età:     <input type="number" name="età" value=""><br><br>

@@ -22,7 +22,7 @@
 
           foreach($books as $row){
             ?>
-            <form method="post" action="<?php $_SERVER['PHP_SELF']?>">
+            <form method="post" action="">
             <input type="hidden" name="id" value="<?php print $row['id']; ?>">
             Title: <input name="title" value="<?php print $row['title']; ?>" >
             Author: <input name="author" value="<?php print $row['author']; ?>" >

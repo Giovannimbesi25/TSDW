@@ -39,7 +39,7 @@
       }
     ?>
 
-    <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
+    <form method="post" action="">
     <input type="submit" value="Svuota Wlist">
     </form>
     <?php

@@ -68,14 +68,17 @@
     $stm->execute();
 
     if($result = $stm->get_result()){
-      $data = $result->fetch_all(MYSQLI_ASSOC);
+      if ($result->num_rows > 0) {
+        $data = $result->fetch_all(MYSQLI_ASSOC);
 
+        $stm->close();
+        $conn->close();
+    
+        return $data;
+      }
     }
 
-    $stm->close();
-    $conn->close();
 
-    return $data;
   }
 
   function insertFilm($titolo, $regista){

@@ -28,7 +28,8 @@
         } elseif ($choice == "No") {
             header("Location: index.php");
         }
-      }else if(!empty($data = searchFilms($titolo, $regista))){
+      }else{
+        $data = searchFilms($titolo, $regista);
         ?>
           <h1>Questi sono il/i film richiesto/i:</h1><br>
         <?php
@@ -49,7 +50,7 @@
       }else{
         ?>
           <h2>Non ci sono film con questo titolo, vuoi inserirlo?</h2><br>
-          <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
+          <form method="post" action="">
               <input type="hidden" name="titolo" value="<?= $titolo ?>"/>
               <input type="hidden" name="regista" value="<?= $regista ?>" />
               <input type="submit" name="choice" value="Si"/>

@@ -43,7 +43,7 @@
         ?>
         <p>
     
-      <form method="post" action="<?php print $_SERVER['PHP_SELF']; ?>" onsubmit="return confermaDelete()" >
+      <form method="post" action="" onsubmit="return confermaDelete()" >
       <input  type="hidden" name="id" value="<?php print $studente['id']; ?>">
       Nome: <input name="nome" value="<?php print $studente['nome']; ?>" readonly>
       Cognome: <input name="cognome" value="<?php print $studente['cognome']; ?>"readonly>

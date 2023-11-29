@@ -41,7 +41,7 @@
         ?>
         <p>
     
-      <form method="post" action="<?php print $_SERVER['PHP_SELF']; ?>">
+      <form method="post" action="">
       <input  type="hidden" name="id" value="<?php print $studente['id']; ?>">
       Nome: <input name="nome" value="<?php print $studente['nome']; ?>">
       Cognome: <input name="cognome" value="<?php print $studente['cognome']; ?>">

@@ -49,7 +49,7 @@
 
     ?>
     <br><br><br><br><h2>Vuoi aggiungere un nuovo libro?</h2><br><br>
-    <form method = "post" action = "<?= $_SERVER['PHP_SELF'] ?>">
+    <form method = "post" action = "">
         ISBN: <input type="text" name="isbn" value=""><br><br>
         TITLE: <input type="text" name = "title" value=""><br><br>
         AUTHOR: <input type="text" name = "author" value=""><br><br>
