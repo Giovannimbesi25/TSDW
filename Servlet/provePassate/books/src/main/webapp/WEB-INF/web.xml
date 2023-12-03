@@ -14,4 +14,16 @@
     <servlet-name>booksServlet</servlet-name>
     <url-pattern>/books</url-pattern>
   </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>changeBookServlet</servlet-name>
+    <servlet-class>com.example.changeBookServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+      <servlet-name>changeBookServlet</servlet-name>
+      <url-pattern>/changes</url-pattern>
+  </servlet-mapping>
+
 </web-app>
