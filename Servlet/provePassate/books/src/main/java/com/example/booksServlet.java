@@ -183,4 +183,14 @@ public class booksServlet extends HttpServlet{
     out.println("</body></html>");
 
   }
+
+  @Override
+  public void destroy() {
+      try{
+          dbConnection.close();
+      } catch(SQLException e) {
+          System.err.println("Caughet SQL exception:\t" + e);
+          e.printStackTrace();
+      }
+  }
 }

@@ -1,9 +1,9 @@
 <html>
-  <!-- <?php
+  <?php
     require_once('database.php');
 
-    // createTables();
-  ?> -->
+    createTables();
+  ?> 
   <head>
     <title>Film Wish List</title>
 </head>
