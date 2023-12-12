@@ -1,0 +1,14 @@
+Tabella Studenti:
+Campi:  matricola INT AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(30) NOT NULL, cognome VARCHAR(30) NOT NULL, corso_studio VARCHAR(50) NOT NULL.
+
+Tabella Esami:
+Campi: id_esame INT AUTO_INCREMENT PRIMARY KEY, nome_esame VARCHAR(50) NOT NULL, voto INT NOT NULL, studente_matricola INT NOT NULL.
+Funzionalità:
+
+Pagina Iniziale: Mostra lista  studenti.
+Pagina Studenti: Cliccando sul nome di uno studente si accede alla sua pagina con tutti i dettagli.
+Pagina Dettagli Studente: Visualizza i dettagli dello studente selezionato e gli esami sostenuti. Si può eliminare/modificare
+Pagina Aggiungi Esame: Permette di inserire un nuovo esame per lo studente selezionato.
+
+
+Pagina Rimozione Studente: Consente di rimuovere uno studente, con conferma di eliminazione e link per tornare alla pagina iniziale.

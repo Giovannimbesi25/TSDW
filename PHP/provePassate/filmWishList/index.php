@@ -2,7 +2,6 @@
 <head><title>FakeFlix</title></head>
 <body>
 <?php
-    //localhost, username, password, dbname
     $conn = new mysqli("localhost", "root", "giovanni", "php_db") or die("Connection error");
 
     if($_SERVER['REQUEST_METHOD']=='GET'){
@@ -130,14 +129,9 @@
                 echo "<h2>WLIST pulita</h2>";
                 echo "<a href='index.php'><h4>Torna alla home</h4></a>";
             }
-            
-            
         }
     }
-
-    
-
-
+    $stm->close();
     $conn->close();
 ?>
 </body>
