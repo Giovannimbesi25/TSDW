@@ -52,12 +52,22 @@ public class studentiServlet extends HttpServlet{
               out.println("<h4>Votazione: <input name='voto' type='text' required value='"+ resultSetEsami.getString("voto")+"'+ /> </h4>");
               out.println("<input type='submit' name='action' value='updateEsame'+ />");
               out.println("<input type='submit' name='action' value='deleteEsame'+ />");
-              out.println("</form>");
+              out.println("</form><br>");
             }while(resultSetEsami.next());  
           }
           preparedStatementEsami.close();
         } catch (SQLException e) {e.printStackTrace();}
         }
+        out.println("<h2>Aggiungi un esame</h2>");
+        out.println("<form method='post'>");
+        out.println("<input hidden type='text'name='matricola' value='"+ matricola + "' />");
+        out.println("<h4>Nome: <input name='nome' type='text' required /> </h4>");
+        out.println("<h4>Votazione: <input name='voto' type='text' required /> </h4>");
+        out.println("<input type='submit' name='action' value='aggiungiEsame'+ />");
+        out.println("</form>");
+
+        out.println("<br><a href='/studenti'><h4>Ritorna alla home</h4></a>");
+
         preparedStatement.close();
 
       }catch(SQLException e){e.printStackTrace();}
@@ -70,7 +80,7 @@ public class studentiServlet extends HttpServlet{
       //   statementStudenti.execute(sqlStudenti);
 
       //   String sqlEsami = "CREATE TABLE esami (codice INT AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(30) NOT NULL, voto INT NOT NULL, studente INT NOT NULL)";
-      //   Statement statementEsami = dbConnection.createStatement();
+      //   Statement statementEsami =  ScdbConnection.createStatement();
       //   statementEsami.execute(sqlEsami);
       //   statementEsami.close();
       //   statementStudenti.close();
@@ -157,14 +167,13 @@ public class studentiServlet extends HttpServlet{
 
       }break;
 
-      case "insertEsame" : {
+      case "aggiungiEsame" : {
         try{
-          String sql = "INSERT INTO esami (nome,voto,studente) WHERE codice=?";
+          String sql = "INSERT INTO esami (nome,voto,studente) VALUES(?,?,?)";
           PreparedStatement preparedStatement = dbConnection.prepareStatement(sql);
           preparedStatement.setString(1, request.getParameter("nome"));
           preparedStatement.setString(2, request.getParameter("voto"));
           preparedStatement.setString(3, request.getParameter("matricola"));
-          preparedStatement.setString(3, request.getParameter("codice"));
           preparedStatement.executeUpdate();
           preparedStatement.close();
         }catch(SQLException e){e.printStackTrace();}
