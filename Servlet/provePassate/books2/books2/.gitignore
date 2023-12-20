@@ -1,0 +1,4 @@
+# .gitignore
+
+# Directory target generata da Maven
+/target/
