@@ -6,10 +6,9 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
-    <servlet-name>booksServlet</servlet-name>
-    <servlet-class>com.example.booksServlet</servlet-class>
+  <servlet-name>booksServlet</servlet-name>
+  <servlet-class>edu.unict.tswd.booksServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>booksServlet</servlet-name>
     <url-pattern>/books</url-pattern>
