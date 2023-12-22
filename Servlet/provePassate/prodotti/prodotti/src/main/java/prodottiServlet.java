@@ -1,11 +1,12 @@
-package com.example;
 import jakarta.servlet.http.*;
 import jakarta.servlet.*;
-import java.io.PrintWriter;
+import jakarta.servlet.annotation.WebServlet;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.*;
 
 
+@WebServlet("/prods")
 public class prodottiServlet extends HttpServlet{
     private Connection dbConnection = null;
 

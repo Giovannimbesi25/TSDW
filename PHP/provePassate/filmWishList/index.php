@@ -10,7 +10,7 @@
         $result = $conn->query($sql);
         if($result->num_rows > 0){
             $film = $result->fetch_assoc();
-            echo "<h1>Film consigliato " . $film['titolo'] . "</h1>";
+            echo "<h1>Film consigliato: " . $film['titolo'] . "</h1>";
         }else{
             echo "<h1>Lista film vuota</h1>";
         }
@@ -45,7 +45,6 @@
                 $regista = $_POST['regista'];
                 if($titolo == "" AND $regista == ""){
                     echo "<h3>Uno dei due campi deve essere riempito</h3>";
-                    echo "<a href='index.php'><h3>Ritorna alla home</h3></a>";
                 }else{
                     $sql = "SELECT * FROM flist WHERE titolo=? OR regista=?";
                     $stm = $conn->prepare($sql);
@@ -74,11 +73,13 @@
                                 <?php
                             }else{
                                 echo "<h2>Nessun film trovato con questi valori</h2>";
-                                echo "<a href='index.php'><h3>Ritorna alla home</h3></a>";
                             }   
                         }
                     }
+                    $stm->close();
                 }
+                echo "<br><br><a href='index.php'><h3>Ritorna alla home</h3></a>";
+
 
             }break;
             
@@ -96,6 +97,7 @@
                     echo "<h2>Film aggiunto con successo</h2>";
                     echo "<a href='index.php'><h3>Ritorna alla home</h3></a>";
                 }
+                $stm->close();
             }break;
 
             case 'wlist' : {
@@ -131,7 +133,6 @@
             }
         }
     }
-    $stm->close();
     $conn->close();
 ?>
 </body>
