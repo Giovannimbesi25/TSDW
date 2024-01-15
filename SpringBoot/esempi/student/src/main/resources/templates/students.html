@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Students</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+<body>
+    <h2>Elenco Studenti</h2>
+    <p th:each="student:${students}">
+        <span th:text="${student.name}"></span>
+        <button><a th:href="@{/students/{id}(id = ${student.id})}">Edit</a></button>
+        <button><a th:href="@{/students/delete/{id}(id = ${student.id})}">Delete</a></button>
+        <button><a th:href="@{/students/doubleAge/{id}(id = ${student.id})}">DoubleAge</a></button>
+    </p>
+
+    <br>
+    <h3>Cerca per età</h3>
+    <form method="post" th:action="@{/students/age}" >
+        <label>Età</label>
+        <input type="nuber" name="age">
+        <button type="submit">Cerca</button>
+     </form>
+    <br>
+    <h3>Cerca per nome e cognome</h3>
+    <form method="post" th:action="@{/students/findByNameAndSurname}">
+        <label>Nome</label>
+        <input type="text" name="name">
+        <label>Cognome</label>
+        <input type="text" name="surname">
+        <button type="submit">Cerca</button>
+    </form>
+    <br><br>
+    <h3>Add Student</h3><br>
+    <form th:action="@{/students/addStudent}" method="post">        
+        <label>Nome</label>
+        <input type="text" name="name" required/>
+        <label>Cognome</label>
+        <input type="text" name="surname" required/>
+        <label>Età</label>
+        <input type="number" name="age" required/>
+        <button type="submit">Add Student</button>
+    </form>
+    
+</body>
+</html>
+
+</body>
+</html>
