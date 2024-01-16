@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>TSDWL Lettere</title>
+    </head>
+
+    <body>
+        <h2>Elenco Lettere</h2>
+        <ul>
+            <li th:each="lettera: ${lettere}">
+                <h4>
+                    <a th:href="@{/lettere/about/{id}(id=${lettera.id})}" th:text="${lettera.nome}"></a>
+                </h4>
+                <form method="post" th:action="@{/lettere/consegna/{id}(id=${lettera.id})}">
+                    <button type="submit">Consegna</button>
+                </form>
+                <form method="post" th:action="@{/lettere/delete/{id}(id=${lettera.id})}">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        </ul>
+        <br>
+        
+        <form method="get" th:action="@{/lettere/befana}">
+            <button type="submit">Arriva la befana</button>
+        </form>
+    
+        <br>
+        <br>
+        <h2>Aggiungi una lettera</h2>
+        <form method="post" th:action="@{/lettere/aggiungiLettera}">
+            <label>Nome</label>
+            <input type="text" required name="nome"/>
+            <label>Quantità</label>
+            <input type="number" required name="quantità"/>
+            <button type="submit">Aggiungi</button>
+        </form>
+    </body>
+</html>

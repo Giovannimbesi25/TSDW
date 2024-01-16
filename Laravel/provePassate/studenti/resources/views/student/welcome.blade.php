@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+
 @if(count($students)>0)
     <h1>Ecco la lista degli studenti</h1>
     <ul>

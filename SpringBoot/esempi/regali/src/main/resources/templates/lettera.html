@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>TSDWL Lettere</title>
+    </head>
+
+    <body>
+        <h2>About Page</h2>
+
+        <h2>Modifica la tua lettera</h2>
+        <form method="post" th:object="${lettera}" th:action="@{/lettere/update}">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            <label>Nome</label>
+            <input type="text" required th:field="*{nome}" />
+            <label>Quantità</label>
+            <input type="number" required  th:field="*{quantità}"/>
+            <label>Consegnata</label>
+            <input type="number" required  th:field="*{consegnata}"/>
+            <button type="submit">Update</button>
+        </form>
+    </body>
+</html>
