@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Prodotti Project</title>
+    </head>
+    <body>
+        <h2>Elenco Prodotti</h2>
+        <ul>
+            <li th:each="prodotto : ${prodotti}">
+                    <label>Nome Prodotto: </label>
+                    <span th:text="${prodotto.nomeProdotto}" />
+                    <br>
+                    <label>Giacenza: </label>
+                    <span th:text="${prodotto.giacenza}" />
+                    <br>
+                    <label>Prezzo: </label>
+                    <span th:text="${prodotto.prezzo}" />
+                    <br>
+                    <div style="display: flex; gap: 10px;" >
+                        <form method="post" th:action="@{/prodotti/compra/{id}(id = ${prodotto.id})}">
+                            <button type="submit">Compra Prodotto</button>
+                        </form>
+                        <form method="post" th:action="@{/prodotti/delete/{id}(id = ${prodotto.id})}">
+                            <button type="submit">Elimina Prodotto</button>
+                        </form>
+                    </div>
+                    
+            </li>
+            <br>
+        </ul>
+        
+
+        <h2>Inserisci Prodotto</h2>
+        <form method="post" th:action="@{/prodotti}">
+            <label>Nome Prodotto</label>
+            <input type="text" required name="nome_prodotto"/>
+            <label>Giacenza</label>
+            <input type="integer" required name="giacenza"/>
+            <label>Prezzo</label>
+            <input type="decimal" required name="prezzo"/>
+            <button type="submit">Aggiungi Prodotto</button>
+        </form>
+    </body>
+</html>

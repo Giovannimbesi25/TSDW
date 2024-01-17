@@ -1,9 +1,10 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>Magazzino</title>
+        <title>Prodotti Project</title>
     </head>
-        <body>
-            @yield('content')
-        </body>
+    <body>
+        @yield('content')
+
+        <br><br>
+    </body>
 </html>

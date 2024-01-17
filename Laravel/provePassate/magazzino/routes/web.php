@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MagazzinoController;
-
+use App\Http\Controllers\ProdottoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +13,4 @@ use App\Http\Controllers\MagazzinoController;
 |
 */
 
-Route::get('/', [MagazzinoController::class, 'index'])->name('magazzino.index');
-Route::post('/', [MagazzinoController::class, 'aggiungi'])->name('magazzino.aggiungi');
-Route::post('/{prodotto}', [MagazzinoController::class, 'compra'])->name('magazzino.compra');
-Route::delete('/{prodotto}', [MagazzinoController::class, 'elimina'])->name('magazzino.elimina');
+Route::resource('prodotti', ProdottoController::class);
