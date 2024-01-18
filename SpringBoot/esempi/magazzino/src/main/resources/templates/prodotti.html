@@ -7,7 +7,7 @@
         <ul>
             <li th:each="prodotto : ${prodotti}">
                     <label>Nome Prodotto: </label>
-                    <span th:text="${prodotto.nomeProdotto}" />
+                    <span th:text="${prodotto.nome}" />
                     <br>
                     <label>Giacenza: </label>
                     <span th:text="${prodotto.giacenza}" />
@@ -15,6 +15,7 @@
                     <label>Prezzo: </label>
                     <span th:text="${prodotto.prezzo}" />
                     <br>
+                    
                     <div style="display: flex; gap: 10px;" >
                         <form method="post" th:action="@{/prodotti/compra/{id}(id = ${prodotto.id})}">
                             <button type="submit">Compra Prodotto</button>
@@ -32,7 +33,7 @@
         <h2>Inserisci Prodotto</h2>
         <form method="post" th:action="@{/prodotti}">
             <label>Nome Prodotto</label>
-            <input type="text" required name="nome_prodotto"/>
+            <input type="text" required name="nome"/>
             <label>Giacenza</label>
             <input type="integer" required name="giacenza"/>
             <label>Prezzo</label>

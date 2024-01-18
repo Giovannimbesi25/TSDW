@@ -1,0 +1,24 @@
+<html>
+    <head><title>Projects</title></head>
+    <body>
+
+        <h2>Benvenuto, di seguito ci sono i tuoi progetti</h2>
+            <ul>
+                <li th:each="project:${projects}">
+                    <label>Title</label>
+                    <a th:href="@{/projects/{id}(id=${project.id})}" ><span th:text="${project.title}"/></a>
+                    <br>
+                </li>
+            </ul>
+            <br><br>
+            <h3>Crea un nuovo progetto</h3>
+            <form method="post" th:action="@{/projects}">
+                <label>Title</label><br>
+                <input name="title" type="text" required/><br>
+                <label>Description</label><br>
+                <textarea cols="50" rows="10" required name="description"></textarea><br><br>
+                <button type="submit">Add Project</button>
+                <br>
+            </form>
+    </body>
+</html>

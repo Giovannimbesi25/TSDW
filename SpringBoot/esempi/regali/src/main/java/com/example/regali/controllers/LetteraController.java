@@ -66,12 +66,9 @@ public class LetteraController {
 
     @PostMapping("/consegna/{id}")
     public String consegna(@PathVariable Long id) {
-        Optional<Lettera> letteraOptional = letteraRepository.findById(id);
-        if(letteraOptional.isPresent()){
-            Lettera lettera = letteraOptional.get();
-            lettera.setConsegnata(1);
-            letteraRepository.save(lettera);
-        }
+        Lettera lettera = letteraRepository.findById(id).orElse(null);
+        lettera.setConsegnata(1);
+        letteraRepository.save(lettera);
         
         return "redirect:/lettere";
     }

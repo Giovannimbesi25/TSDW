@@ -10,14 +10,14 @@ public class Magazzino {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome_prodotto;
+    private String nome;
     private Integer giacenza;
     private Double prezzo;
 
     public Magazzino(){}
 
-    public Magazzino(String nome_prodotto, Integer giacenza, Double prezzo){
-        this.nome_prodotto = nome_prodotto;
+    public Magazzino(String nome, Integer giacenza, Double prezzo){
+        this.nome = nome;
         this.giacenza = giacenza;
         this.prezzo = prezzo;
     }
@@ -26,8 +26,8 @@ public class Magazzino {
         return this.id;
     }
 
-    public String getNomeProdotto(){
-        return this.nome_prodotto;
+    public String getNome(){
+        return this.nome;
     }
     public Integer getGiacenza(){
         return this.giacenza;
@@ -39,8 +39,8 @@ public class Magazzino {
     public void setId(Long id){
         this.id = id;
     }
-    public void setNomeProdotto(String nomeProdotto){
-        this.nome_prodotto = nomeProdotto;
+    public void setNome(String nomeProdotto){
+        this.nome = nomeProdotto;
     }
     public void setGiacenza(Integer giacenza){
         this.giacenza = giacenza;
