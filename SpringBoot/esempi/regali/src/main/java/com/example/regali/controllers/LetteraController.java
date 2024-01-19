@@ -24,12 +24,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LetteraController {
     
     @Autowired
-    public final LetteraRepository letteraRepository;
+    private LetteraRepository letteraRepository;
     
-    public LetteraController(LetteraRepository letteraRepository){
-        this.letteraRepository = letteraRepository;
-    }
-
     @GetMapping
     public String getMethodName(Model model) {
         List<Lettera> lettere = letteraRepository.findByConsegnata(0);
@@ -39,20 +35,14 @@ public class LetteraController {
 
     @GetMapping("/about/{id}")
     public String about(@PathVariable Long id, Model model) {
-        Optional<Lettera> letteraOptional = letteraRepository.findById(id);
-        if(letteraOptional.isPresent()){
-            Lettera lettera = letteraOptional.get();
-            model.addAttribute("lettera", lettera);
-            return "lettera";
-        }
-
-        return "redirect:/lettere";
+        Lettera lettera = letteraRepository.findById(id).orElse(null);
+        model.addAttribute("lettera", lettera);
+        return "lettera";
     }
 
     @PostMapping("/update")
     public String update(@ModelAttribute Lettera lettera) {
         letteraRepository.save(lettera);
-
         return "redirect:/lettere/about/"+lettera.getId();
     }
 
@@ -69,24 +59,25 @@ public class LetteraController {
         Lettera lettera = letteraRepository.findById(id).orElse(null);
         lettera.setConsegnata(1);
         letteraRepository.save(lettera);
-        
         return "redirect:/lettere";
     }
 
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         letteraRepository.deleteById(id);
-        
         return "redirect:/lettere";
     }
 
     @GetMapping("/befana")
     public String befana() {
         List<Lettera> lettere = letteraRepository.findByConsegnata(0);
-        for (Lettera lettera : lettere) {
-            lettera.setQuantità(lettera.getQuantità()*2);
-            letteraRepository.save(lettera);
+        if(lettere.size() > 0){
+            for (Lettera lettera : lettere) {
+                lettera.setQuantità(lettera.getQuantità()*2);
+                letteraRepository.save(lettera);
+            }
         }
+
         return "redirect:/lettere";
     }
     

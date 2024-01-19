@@ -39,7 +39,7 @@ public class ProjectController {
     }
 
     @PostMapping("/{id}")
-    public String update(Project project, Model model){
+    public String update(Project project){
         projectRepository.save(project);
         return "redirect:/projects/"+project.getId();
     }

@@ -21,24 +21,12 @@ public class MagazzinoController {
     @Autowired
     private MagazzinoRepository magazzinoRepository;
 
-    public MagazzinoController(MagazzinoRepository magazzinoRepository){
-        this.magazzinoRepository = magazzinoRepository;
-    }
-
     @GetMapping
     public String index(Model model) {
         List<Magazzino> prodotti = magazzinoRepository.findByGiacenzaGreaterThan(0);
         model.addAttribute("prodotti", prodotti);
-        
         return "prodotti";
     }
-
-    // @PostMapping
-    // public String store(@RequestParam String nome, @RequestParam Integer giacenza, @RequestParam Double prezzo ) {
-    //     Magazzino magazzino = new Magazzino(nome, giacenza, prezzo);
-    //     magazzinoRepository.save(magazzino);
-    //     return "redirect:/prodotti";
-    // }
 
     @PostMapping
     public String store(Magazzino magazzino) {
@@ -59,8 +47,6 @@ public class MagazzinoController {
     public String delete(@PathVariable Long id) {
         Magazzino magazzino = magazzinoRepository.findById(id).orElse(null);
         magazzinoRepository.delete(magazzino);
-        
-        
         return "redirect:/prodotti";
     }
     
