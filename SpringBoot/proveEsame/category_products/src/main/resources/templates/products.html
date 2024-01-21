@@ -1,0 +1,37 @@
+<html>
+    <head><title>TSDWL Project</title></head>
+    <body>
+        <h2>Lista Prodotti</h2>
+
+        <ul>
+            <li th:each="product : ${products}">
+                <h3>
+                    <a th:href="@{/products/{id}(id=${product.id})}">
+                        <span th:text="${product.nome}" />
+                    </a>
+                </h3>
+            </li>
+        </ul>
+
+        <br>
+        <h2>Crea un nuovo product</h2>
+        <br>
+        <form method="post" th:action="@{/products}">
+            <label>Nome</label>
+            <input type="text" name="nome" required/><br><br>
+            <label>Giacenza</label>
+            <input required type="number" name="giacenza"></input><br><br>
+            <label>Prezzo</label>
+            <input type="number" name="prezzo" required/><br><br>
+            <select name="categoria" required>
+                <option th:each="category:${categories}" th:value="${category.id}" th:text="${category.nome}"></option>
+            </select><br><br>
+            <button type="submit">Aggiungi</button>
+        </form>
+
+        <br><br><br>
+        <h3><a href="/"/>Torna alla home</h3>
+    </body>
+
+
+</html>

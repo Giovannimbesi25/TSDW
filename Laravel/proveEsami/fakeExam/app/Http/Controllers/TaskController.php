@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;    
 
 class TaskController extends Controller
 {
@@ -30,7 +30,11 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Project::findOrFail($request->input('project_id'));
+        try{
+            Project::findOrFail($request->input('project_id'));
+        }catch(ModelNotFoundException $e){
+            return response('<a href="/">Project ID NOT VALID RETURN HOME</a>');
+        }
         Task::create($request->all());
         return redirect('/');
     }
@@ -57,7 +61,11 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        Project::findOrFail($request->input('project_id'));
+        try{
+            Project::findOrFail($request->input('project_id'));
+        }catch(ModelNotFoundException $e){
+            return response('<a href="/">Project ID NOT VALID RETURN HOME</a>');
+        }
         $task->update($request->all());
         return redirect("/tasks/$task->id/edit");    
     }

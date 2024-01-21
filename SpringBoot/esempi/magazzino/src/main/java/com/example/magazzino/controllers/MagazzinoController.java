@@ -49,5 +49,4 @@ public class MagazzinoController {
         magazzinoRepository.delete(magazzino);
         return "redirect:/prodotti";
     }
-    
 }

@@ -1,0 +1,30 @@
+<html>
+    <head><title>SpringBoot Player Project</title></head>
+<body>
+    <h2>Lista Players</h2>
+    <br>
+    <ul>
+        <li th:each="player:${players}">
+            <h4><a th:href="@{/players/{id}(id=${player.id})}"> <span th:text="${player.nome}" /></a></h4>
+        </li>
+        <br><br>
+    </ul>
+    <br>
+    <h2>Aggiungi un nuovo player</h2>
+    <form method="post" th:action="@{/players}">
+        <label>Nome</label>
+        <input type="text" name="nome" required/><br><br>
+        <label>Cognome</label>
+        <input type="text" name="cognome" required/><br><br>
+        <label>Età</label>
+        <input type="number" name="età" required/><br><br>
+        <label>Squadra</label>
+        <select name="team" required>
+            <option th:each="team:${teams}" th:value="${team.id}" th:text="${team.nome}"></option>
+        </select><br><br>
+        <button type="submit">Aggiungi</button>
+    </form>
+</body>
+<br><br>
+<a href="/">Home</a>
+</html>

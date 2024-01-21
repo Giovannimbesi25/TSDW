@@ -1,0 +1,25 @@
+<html>
+    <head><title>TSDW TeamPlayers Project</title></head>
+    <body>
+        <h2>Lista Team</h2>
+        <ul>
+            <li th:each="team: ${teams}">
+                <h4><a th:href="@{/teams/{id}(id=${team.id})}"><span th:text="${team.nome}"></span></a></h4>
+            </li>
+            <br>
+        </ul>
+
+        <br>
+        <h2>Aggiungi un nuovo team</h2>
+        <form method="post" th:action="@{/teams}">
+            <label>Nome</label>
+            <input type="text" required name="nome"/><br><br>
+            <label>Anno Fondazione</label>
+            <input type="integer" required name="fondazione"/><br><br>
+            <button type="submit">Aggiungi</button>
+        </form>
+    </body>
+
+    <br><br>
+    <a href="/">Home</a>
+</html>

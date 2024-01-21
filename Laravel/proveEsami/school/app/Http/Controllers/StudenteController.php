@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Studente;
 use App\Models\Classe;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class StudenteController extends Controller
 {
@@ -31,7 +32,11 @@ class StudenteController extends Controller
      */
     public function store(Request $request)
     {
-        Classe::findOrFail(request('class_id'));
+        try{
+            Classe::findOrFail(request('class_id'));
+        }catch(ModelNotFoundException $e){
+            return response('<h1>Invalid Class ID</h1><a href="/">Home</a>');
+        }
         Studente::create($request->all());
         return redirect('/');
     }
@@ -57,7 +62,11 @@ class StudenteController extends Controller
      */
     public function update(Request $request, Studente $student)
     {   
-        Classe::findOrFail(request('class_id'));
+        try{
+            Classe::findOrFail(request('class_id'));
+        }catch(ModelNotFoundException $e){
+            return response('<h1>Invalid Class ID</h1><a href="/">Home</a>');
+        }
         $student->update($request->all());
         return redirect("/students/$student->id");
     }

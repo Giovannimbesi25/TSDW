@@ -1,0 +1,33 @@
+<html>
+    <head><title>SpringBoot Player Project</title></head>
+<body>
+    <h2>About Page</h2>
+    <h2>Update or Delete Player</h2>
+    <br>
+    <form method="post" th:object="${player}" th:action="@{/players/{id}(id=${player.id})}">
+        <input type="hidden" th:field="*{id}"  name="id" required/><br><br>
+        <label>Nome</label>
+        <input type="text" th:field="*{nome}"  name="nome" required/><br><br>
+        <label>Cognome</label>
+        <input type="text" th:field="*{cognome}" name="cognome" required/><br><br>
+        <label>Età</label>
+        <input th:field="*{età}" name="età" required/><br><br>
+        <label>Squadra</label>
+        <select th:field="*{team}">
+            <option th:each="team:${teams}" 
+                th:selected="${team == player.team}"
+                th:value="${team.id}" 
+                th:text="${team.nome}" >
+        </option>
+        </select><br>
+        <button type="submit">Update</button>
+    </form>
+    <br>
+    <form method="post" th:action="@{/players/delete/{id}(id=${player.id})}">
+        <button type="submit">Delete Player</button>
+    </form>
+
+</body>
+    <br><br>
+    <a href="/">Home</a>
+</html>

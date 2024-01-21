@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\player;
 use App\Models\team;
 use Illuminate\Http\Request;
-
 class PlayerController extends Controller
 {
     /**
@@ -30,6 +29,11 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
+        try{
+            team::findOrFail(request('team_id'));
+        }catch (ModelNotFoundException $exception) {
+            return response("TEAM ID NOT VALID");
+        }        
         player::create($request->all());
         return redirect("/");
     }
@@ -56,7 +60,11 @@ class PlayerController extends Controller
      */
     public function update(Request $request, player $player)
     {
-        team::findOrFail(request('team_id'));
+        try{
+            team::findOrFail(request('team_id'));
+        }catch (ModelNotFoundException $exception) {
+            return response("TEAM ID NOT VALID");
+        }   
         $player->update($request->all());
         return redirect("/players/$player->id");
     }

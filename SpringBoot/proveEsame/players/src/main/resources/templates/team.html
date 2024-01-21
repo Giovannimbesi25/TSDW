@@ -1,0 +1,34 @@
+<html>
+    <head><title>TSDW TeamPlayers Project</title></head>
+    <body>
+        <h2>Team About Page</h2>
+        <br>
+        <ul>
+            <li th:each="player: ${team.players}">
+                <span th:text="${player.nome}+' '+${player.cognome}"/>
+            </li>
+            <br>
+        </ul>
+        <br>
+        <form method="get" action="/players"/>
+            <button type="submit">Aggiungi un giocatore </button>
+        </form>
+        <br>
+        <br>
+        <h2>Modifica o Elimina Team</h2>
+        <form method="post" th:object="${team}" th:action="@{/teams/{id}(id=${team.id})}">
+            <input type="hidden" th:field="*{id}"/>
+            <label>Nome</label>
+            <input type="text" th:field="*{nome}" required name="nome"/><br><br>
+            <label>Anno Fondazione</label>
+            <input type="number" th:field="*{fondazione}" required name="fondazione"/><br><br>
+            <button type="submit">Modifica</button>
+        </form>
+        <br>
+        <form method="post" th:object="${team}" th:action="@{/teams/delete/{id}(id=${team.id})}">
+            <button type="submit">Elimina Team</button>
+        </form>
+    </body>
+    <br><br>
+    <a href="/">Home</a>
+</html>
