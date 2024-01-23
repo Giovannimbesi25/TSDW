@@ -22,7 +22,7 @@ public class Author {
         this.id = id;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="author_id")
     private List<Book> books;
 

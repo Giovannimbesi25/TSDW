@@ -13,7 +13,7 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Project {
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)    
     @JoinColumn(name = "project_id")
     private List<Task> tasks;
 
