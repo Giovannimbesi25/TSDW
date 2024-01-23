@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    <body>
+    <h3>Lista Autori</h3>
+    <ul>
+        <li th:each="author:${authors}">
+            <h4>
+                <a th:href="@{/authors/{id}(id = ${author.id})}">
+                    <span th:text="${author.nome}" /> 
+                </a>
+            </h4>
+        </li>
+    </ul>
+    <br>
+    <h3>Aggiungi un autore</h3><br>
+    <form method="post" action="/authors">
+        <label>Nome</label>
+        <input type="text" required name="nome" /><br><br>
+        <label>Cognome</label>
+        <input type="text" required name="cognome" /><br><br>
+        <label>Età</label>
+        <input type="numer" required name="età" /><br><br>
+        <button type="text">Aggiungi</button>
+    </form>
+    <br><br><br><br>
+    <a href="/">Home</a>
+</body>
+</html>

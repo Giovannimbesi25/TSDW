@@ -10,6 +10,6 @@ class Classe extends Model
     protected $fillable=['materia','anno','scuola'];
     use HasFactory;
     public function studentes(){
-        return $this->hasMany(Studente::class, 'class_id');
+        return $this->hasMany(Studente::class);
     }
 }

@@ -13,7 +13,7 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Category {
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "categoria_id")
     private List<Product> products;
 

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    <body>
+        <h3>Lista Books</h3>
+        <ul>
+            <li th:each="book:${author.books}">
+                <h4>
+                    <span th:text="${book.titolo}" /> 
+                </h4>
+            </li>
+        </ul>
+        <br>
+        <form  method="get" th:action="@{/books/create/{authorId}( authorId= ${author.id})}">
+            <button type="text">Aggiungi un libro per questo autore</button>  
+        </form>
+        <br>
+        <h3>Modifica o Elimina Autore</h3><br>
+        <form th:object="${author}" method="post" th:action="@{/authors/{id}( id= ${author.id })}">
+            <input type="hidden" th:field="*{id}" />
+            <label>Nome</label>
+            <input th:field="*{nome}"  type="text" required name="nome" /><br><br>
+            <label>Cognome</label>
+            <input th:field="*{cognome}"  type="text" required name="cognome" /><br><br>
+            <label>Età</label>
+            <input th:field="*{età}"  type="number" required name="età" /><br><br>
+            <button type="text">Aggiungi</button>  
+        </form>
+        <br>
+        <form th:object="${author}" method="post" th:action="@{/authors/delete/{id}( id= ${author.id })}">
+            <button type="text">Delete</button>
+        </form>
+        <br><br><br><br>
+        <a href="/">Home</a>
+    </body>
+</html>
