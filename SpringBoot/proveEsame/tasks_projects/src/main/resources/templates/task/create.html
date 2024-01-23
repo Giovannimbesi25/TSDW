@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    <body>
+        <h3>Crea un nuovo task</h3><br>
+
+        <form method="post" action="/tasks" >
+            <label>Nome</label>
+            <input type="text" name="nome" required /><br><br>
+            <label>Descrizione</label>
+            <input type="text" name="descrizione" required /><br><br>
+            <label>Creazione</label>
+            <input type="number" name="creazione" required /><br><br>
+            <select name="project">
+                <option
+                    th:each="project: ${projects}"
+                    th:value="${project.id}"
+                    th:text="${project.nome}"
+                >
+                </option>
+            </select><br><br>
+            <button type="submit">Aggiungi</button>
+        </form>
+
+        <br><br><br>
+        <a href="/">Home</a>
+    </body>
+</html>

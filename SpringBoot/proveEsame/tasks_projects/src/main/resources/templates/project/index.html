@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    <body>
+        <h3>Lista Projects</h3><br>
+
+        <ul>
+            <li th:each="project : ${projects}">
+                <h4>
+                    <a th:href="@{/projects/{id}(id = ${project.id})}">
+                        <span th:text="${project.nome}"/>
+                    </a>
+                </h4>
+            </li>
+        </ul>
+
+
+        <br><br><br>
+        <a href="/">Home</a>
+    </body>
+</html>

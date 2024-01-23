@@ -55,6 +55,6 @@ public class AuthorController {
         Author author  = authorRepository.findById(id).orElse(null);
         authorRepository.delete(author);
         return "redirect:/authors";
-    }
+    }   
     
 }

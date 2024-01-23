@@ -18,6 +18,7 @@
         <br>
         <form method="post" th:object="${category}" th:action="@{/categories/{id}(id=${category.id})}">
             <input type="hidden" th:field="*{id}" />
+            <input type="hidden" th:field="*{products}" />
             <label>Nome</label>
             <input type="text" name="nome" th:field="*{nome}" required/><br><br>
             <label>Descrizione</label><br>

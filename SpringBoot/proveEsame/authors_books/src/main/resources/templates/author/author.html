@@ -19,6 +19,7 @@
         <h3>Modifica o Elimina Autore</h3><br>
         <form th:object="${author}" method="post" th:action="@{/authors/{id}( id= ${author.id })}">
             <input type="hidden" th:field="*{id}" />
+            <input type="hidden" th:field="*{books}" />
             <label>Nome</label>
             <input th:field="*{nome}"  type="text" required name="nome" /><br><br>
             <label>Cognome</label>
