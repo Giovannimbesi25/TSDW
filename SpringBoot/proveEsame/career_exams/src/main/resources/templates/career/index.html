@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>SpringBoot TSDWL Project</title>
+    </head>
+    <h2>List Careers</h2>
+    
+    <ul>
+        <li th:each="career:${careers}">
+            <h4> 
+                <a th:href="@{/careers/{id}(id=${career.id})}">
+                    <span th:text="${career.nomeStudente}+' '+${career.cognomeStudente}"/>
+                </a>
+            </h4>
+        </li>
+    </ul>
+
+    <br><br><br><br><br>
+    <a href="/">Home</a>
+</html>

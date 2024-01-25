@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>SpringBoot TSDWL Project</title>
+    </head>
+    <h2>Create New Career</h2>
+    
+    <form method="post" th:action="@{/careers}">
+        <label>NomeStudente</label>
+        <input type="text" required name="nomeStudente"/><br><br>
+        <label>CognomeStudente</label>
+        <input type="text" required name="cognomeStudente"/><br><br>
+        <label>Matricola</label>
+        <input type="number" required name="matricola"/><br><br>
+        <button type="submit">Aggiungi</button>
+    </form><br>
+
+    <br><br><br><br><br>
+    <a href="/">Home</a>
+</html>

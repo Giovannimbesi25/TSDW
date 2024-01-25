@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>SpringBoot TSDWL Project</title>
+    </head>
+    <h2>Modifica o Elimina Exam</h2>
+    
+    <form th:object="${exam}" method="post" th:action="@{/exams/{id}(id=${exam.id})}">
+        <input th:field="*{id}" type="hidden" required name="id"/><br><br>
+        <label>Corso</label>
+        <input th:field="*{corso}" type="text" required name="corso"/><br><br>
+        <label>Data</label>
+        <input th:field="*{data}" type="text" required name="data"/><br><br>
+        <label>Voto</label>
+        <input th:field="*{voto}" type="number" required name="voto"/><br><br>
+        <select name="career">
+            <option 
+                th:each="career:${careers}"
+                th:value="${career.id}"
+                th:text="${career.nomeStudente}+' '+${career.cognomeStudente}"
+                th:selected="${career.id == exam.career.id}"
+            >
+            </option>
+        </select><br><br>
+        <button type="submit">Modifica</button>
+    </form>
+    <form th:object="${exam}" method="post" th:action="@{/exams/{id}(id=${exam.id})}">
+        <button type="submit">Elimina</button>
+    </form><br>
+
+    <br><br><br><br><br>
+    <a href="/">Home</a>
+</html>

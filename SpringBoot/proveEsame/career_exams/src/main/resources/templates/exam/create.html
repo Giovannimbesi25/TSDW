@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>SpringBoot TSDWL Project</title>
+    </head>
+    <h2>Create New Exam</h2>
+    
+    <form method="post" th:action="@{/exams}">
+        <label>Corso</label>
+        <input type="text" required name="corso"/><br><br>
+        <label>Data</label>
+        <input type="date" required name="data"/><br><br>
+        <label>Voto</label>
+        <input type="number" required name="voto"/><br><br>
+        <select name="career">
+            <option 
+                th:each="career:${careers}"
+                th:value="${career.id}"
+                th:text="${career.nomeStudente}+' '+${career.cognomeStudente}"
+            >
+            </option>
+        </select><br><br>
+        <button type="submit">Aggiungi</button>
+    </form><br>
+
+    <br><br><br><br><br>
+    <a href="/">Home</a>
+</html>

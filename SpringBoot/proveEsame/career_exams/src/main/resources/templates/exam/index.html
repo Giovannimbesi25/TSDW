@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>SpringBoot TSDWL Project</title>
+    </head>
+    <h2>List Exams</h2>
+    
+    <ul>
+        <li th:each="exam:${exams}">
+            <h4> 
+                <a th:href="@{/exams/{id}(id=${exam.id})}">
+                    <span th:text="${exam.corso}"/>
+                </a>
+            </h4>
+        </li>
+    </ul>
+
+    <br><br><br><br><br>
+    <a href="/">Home</a>
+</html>
