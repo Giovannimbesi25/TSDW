@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    <body>
+        <h3>List Orders</h3>
+        <ul>
+            <li th:each="order: ${client.orders}">
+                <h4>
+                    <span th:text="${order.data}"/>
+                </h4>
+            </li>
+        </ul><br>
+        <h3>Modifica o Elimina Client</h3><br>
+        <form method="post" th:object="${client}" th:action="@{/clients/{id}(id=${client.id})}">
+            <input th:field="*{id}" type="hidden" required name="id" /><br><br>
+            <label>Nome</label>
+            <input th:field="*{nome}" type="text" required name="nome" /><br><br>
+            <label>Cognome</label>
+            <input th:field="*{cognome}" type="text" required name="cognome" /><br><br>
+            <label>Età</label>
+            <input th:field="*{età}" type="number" required name="età" /><br><br>
+            <button type="submit">Modifica</button>
+        </form><br>
+        
+        <form method="post" th:object="${client}" th:action="@{/clients/delete/{id}(id=${client.id})}">
+            <button type="submit">Elimina</button>
+        </form><br>
+        <br>
+    </body>
+    <br><br><br>
+    <a href="/">Home</a>
+</html>

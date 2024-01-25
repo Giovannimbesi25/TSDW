@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    
+    <h3>Songs List</h3>
+    <ul>
+        <li th:each="song:${singer.songs}">
+            <h4>
+                <span th:text="${song.nome}"/>
+            </h4>
+        </li>
+    </ul>
+    <br>
+    <h3>Modifica o Elimina Singer</h3>
+    <form th:object="${singer}" method="post" th:action="@{/singers/{id}(id=${singer.id})}">
+        <input th:field="*{id}" type="hidden" name="id" required /><br><br>
+        <label>Nome</label>
+        <input th:field="*{nome}" type="text" name="nome" required /><br><br>
+        <label>Cognome</label>
+        <input th:field="*{cognome}" type="text" name="cognome" required /><br><br>
+        <label>Età</label>
+        <input th:field="*{età}" type="number" name="età" required /><br><br>
+        <button type="submit">Modifica</button>
+    </form>
+    <form th:object="${singer}" method="post" action="@{/singers/delete/{id}(id=${singer.id})}">
+        <button type="submit">Delete</button>
+    </form>
+    <br><br><br><br>
+    <a href="/">Home</a>
+</html>

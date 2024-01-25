@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    <body>
+        <h2>Clients List</h2><br>
+        <ul>
+            <li th:each="client: ${clients}">
+                <h4>
+                    <a th:href="@{/clients/{id}(id=${client.id})}">
+                        <span th:text="${client.nome} + ' ' + ${client.cognome} " />
+                    </a>
+                </h4>
+            </li>
+        </ul>
+
+        <br>
+    </body>
+    <br><br><br>
+    <a href="/">Home</a>
+</html>

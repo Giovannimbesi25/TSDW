@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    
+    <h2>List Singers</h2><br>
+
+    <ul>
+        <li th:each="singer:${singers}">
+            <h4>
+                <a th:href="@{/singers/{id}(id=${singer.id})}">
+                    <span th:text="${singer.nome} + ' ' + ${singer.cognome}"/>
+                </a>
+            </h4>
+        </li>
+    </ul>
+    <br><br><br><br>
+    <a href="/">Home</a>
+</html>

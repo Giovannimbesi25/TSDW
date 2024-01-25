@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    <h2>Benvenuto!</h2>
+    <h3>Singers Actions</h3><br>
+    <form method="get" action="/singers">
+        <button type="submit">List Singers</button>
+    </form><br>
+    <form method="get" action="/singers/create">
+        <button type="submit">Create New Singer</button>
+    </form><br>
+    <form method="get" action="/singers/searchBySong">
+        <label>Song</label>
+        <input type="text" required name="songName"/>
+        <button type="submit">Search by Song</button>
+    </form><br><br>
+    <h3>Songs Actions</h3><br>
+    <form method="get" action="/songs">
+        <button type="submit">List Songs</button>
+    </form><br>
+    <form method="get" action="/songs/create">
+        <button type="submit">Create New Song</button>
+    </form><br>
+    <form method="get" action="/songs/searchBySinger">
+        <label>Nome</label>
+        <input type="text" name="nome" >
+        <label>Cognome</label>
+        <input type="text" name="cognome" >
+        <button type="submit">Search by Singer Name And Surname</button>
+    </form><br>
+
+</html>

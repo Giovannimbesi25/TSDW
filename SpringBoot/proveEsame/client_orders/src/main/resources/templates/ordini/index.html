@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    <body>
+        <h2>Orders List</h2><br>
+        <ul>
+            <li th:each="order: ${orders}">
+                <h4>
+                    <a th:href="@{/orders/{id}(id=${order.id})}">
+                        <span th:text="${order.data}" />
+                    </a>
+                </h4>
+            </li>
+        </ul>
+
+        <br>
+    </body>
+    <br><br><br>
+    <a href="/">Home</a>
+</html>

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>TSDWL Project</title>
+    </head>
+    <body>
+        <h2>Create new Order</h2><br>
+        
+        <form method="post" action="/orders">
+            <label>Data</label>
+            <input type="date" required name="data" /><br><br>
+            <label>Importo</label>
+            <input step="any" type="number" required name="importo" /><br><br>
+            <label>Client</label>
+            <select name="client">
+                <option 
+                    th:each="client:${clients}"
+                    th:value="${client.id}"
+                    th:text="${client.nome}+' ' +${client.cognome}">
+                </option>
+            </select ><br><br>
+            <button type="submit">Aggiungi</button>
+        </form><br>
+        
+        <br>
+    </body>
+    <br><br><br>
+    <a href="/">Home</a>
+</html>
