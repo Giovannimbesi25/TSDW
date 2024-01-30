@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>TSDWL Project SpringBoot</title>
+    </head>
+    <body>
+        <h2>Add New Children</h2>
+
+        <form method="post" th:action="@{/childrens}">
+            <label>Nome Bambino</label>
+            <input type="text" required name="nome"/> <br><br>
+            <label>Cognome Bambino</label>
+            <input type="text" required name="cognome"/> <br><br>
+            <label>Età</label>
+            <input type="number" required name="età"/> <br><br>
+            <button type="submit">Aggiungi</button>
+        </form>
+    </body>
+    <br><br><br><br><br>
+    <a href="/">Home</a>
+</html>

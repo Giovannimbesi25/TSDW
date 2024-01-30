@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>TSDWL Project SpringBoot</title>
+    </head>
+    <body>
+        <h2>Modifica o Rimuovi Game</h2>
+
+        <form method="post" th:object="${game}" th:action="@{/games/{id}(id=${game.id})}">
+            <input th:field="${game.id}" type="hidden" required name="id"/>
+            <label>Nome Gioco</label>
+            <input th:field="${game.nomeGioco}" type="text" required name="nomeGioco"/> <br><br>
+            <label>Costo</label>
+            <input th:field="${game.costo}" step="any"  type="number" required name="costo"/> <br><br>
+            <select name="children">
+                <option th:each="children:${childrens}" th:value="${children.id}" th:text="${children.nome}+' '+ ${children.cognome}"
+                th:selected="${children.id == game.children.id}"/>
+            </select><br><br>
+            <button type="submit">Aggiungi</button>
+        </form>
+
+    </body>
+
+    <br><br><br><br><br>
+    <a href="/">Home</a>
+</html>

@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>TSDWL Project SpringBoot</title>
+    </head>
+    <body>
+        <h2>Childrens List</h2>
+
+        <ul>
+            <li th:each="children:${childrens}">
+                <a th:href="@{/childrens/{id}(id=${children.id})}">
+                    <span th:text="${children.nome}+' '+ ${children.cognome}"/>
+                </a>
+            </li>
+        </ul>
+    </body>
+    <br><br><br><br><br>
+    <a href="/">Home</a>
+</html>

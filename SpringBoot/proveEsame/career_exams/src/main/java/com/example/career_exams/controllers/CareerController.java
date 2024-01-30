@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/careers")
 @Controller
 public class CareerController {
-    @Autowired
+    
     private CareerRepository careerRepository;
 
     public CareerController(CareerRepository careerRepository){

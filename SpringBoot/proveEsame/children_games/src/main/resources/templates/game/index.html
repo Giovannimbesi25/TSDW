@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>TSDWL Project SpringBoot</title>
+    </head>
+    <body>
+        <h2>Games List</h2>
+
+        <ul>
+            <li th:each="game:${games}">
+                <a th:href="@{/games/{id}(id=${game.id})}">
+                    <span th:text="${game.nomeGioco}"/>
+                </a>
+            </li>
+        </ul>
+    </body>
+    <br><br><br><br><br>
+    <a href="/">Home</a>
+</html>
