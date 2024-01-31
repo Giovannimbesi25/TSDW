@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('regions');
-        Schema::dropIfExists('costumes');
-
-        Schema::create('regions', function (Blueprint $table) {
+        Schema::create('continents', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("name");
-            $table->string("country");
+            $table->string('nome');
+            $table->double('area');
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('regions');
+        Schema::dropIfExists('continents');
     }
 };

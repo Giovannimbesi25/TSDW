@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('regions');
-        Schema::dropIfExists('costumes');
-
-        Schema::create('regions', function (Blueprint $table) {
+        Schema::create('fiumes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("name");
-            $table->string("country");
+            $table->string('nome');
+            $table->double('lunghezza');
+            $table->string('foce');
+        });
+
+        Schema::table('fiumes', function (Blueprint $table){
+            $table->foreignId('continent_id')->constrained('continents')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('regions');
+        Schema::dropIfExists('fiumes');
     }
 };

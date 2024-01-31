@@ -47,7 +47,7 @@ class CostumeController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     */
+     */ 
     public function edit(Costume $costume)
     {
 
@@ -71,7 +71,6 @@ class CostumeController extends Controller
         return redirect("/costumes");
     }
 
-    
     public function dimezza()
     {
         $costumes = Costume::all();

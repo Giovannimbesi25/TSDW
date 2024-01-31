@@ -12,12 +12,12 @@
 
         @if($costume->name === "Vulcan")
             <label>Img</label>
-            <img src="{{$costume->img}}" alt="{{$costume->name}}" width="100"><br><br>
+            <img src="{{$costume->img}}" alt="{{$costume->name}}" width="100">
         @else
             <label>Img</label>
-            <input value="{{$costume->img}}" name="img" type="text" required/><br><br>
+            <input value="{{$costume->img}}" name="img" type="text" required/>
         @endif
-
+        <br><br>
         <label>Prezzo</label>
         <input value="{{$costume->prezzo}}" name="prezzo" step="any" type="number" required/><br><br>
 

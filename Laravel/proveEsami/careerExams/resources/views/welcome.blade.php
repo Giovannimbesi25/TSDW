@@ -14,7 +14,7 @@
         </form><br>
         <form method="post" action="/careers/deleteAll">
             @csrf
-            <button type="submit">Delete All Careers</button>
+            <button type="submit">Delete All Continent</button>
         </form><br>
         <br>
         <h3>Exams Actions</h3>
@@ -26,7 +26,7 @@
         </form><br>
         <form method="post" action="/exams/deleteAll">
             @csrf
-            <button type="submit">Delete All Exams</button>
+            <button type="submit">Delete All Fiumes</button>
         </form><br>
         <br>
     </body>
